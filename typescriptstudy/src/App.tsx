@@ -1,15 +1,25 @@
 import './App.css'
-import HelloComponent from './HelloComponent'
-import ByeComponent from './ByeComponent';
+import { useState } from 'react';
 
 function App() {
+  const [name, setName] = useState('');
+
+  const handleChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+  }
+
+  const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    alert(`Hello ${name}`);
+  }
+
 
   return (
     <>
-      <HelloComponent name='김일' />
-      <br />
-      <br />
-      <ByeComponent name='김일'/>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={name} onChange={handleChange}/>
+        <input type="submit" value="제출"/>
+      </form>
     </>
   )
 }
