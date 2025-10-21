@@ -6,7 +6,6 @@ const queryClient = new QueryClient();
 
 function App() {
 
-
   return (
     <Container maxWidth="xl">
       <CssBaseline />
