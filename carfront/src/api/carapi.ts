@@ -1,6 +1,7 @@
 // api/carapi.ts 파일 생성
 import axios from "axios";
 import { CarResponse, Car } from "../types";
+import { CarEntity } from "../types";
 
 export const getCars = async ():// 매개변수 없음 전체 가져올꺼니까, 특정 요소 가져올꺼면 id
   Promise<CarResponse[]> => {
@@ -22,4 +23,13 @@ export const addCar = async (car: Car) : Promise<CarResponse> => {
   });
 
   return response.data;
+}
+
+export const updateCar = async (carEntity: CarEntity) : Promise<CarResponse> => {
+  const response = await axios.put(carEntity.url, carEntity.car, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  });
+  return response.data
 }
